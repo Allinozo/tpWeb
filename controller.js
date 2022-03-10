@@ -36,6 +36,7 @@ function Pencil(ctx, drawing, canvas) {
 				break;
 			}
 		}
+		drawing.paint(ctx);
 	}
 	//Actif tant que le clic est maintenu
 	Pencil.prototype.onInteractionUpdate = function(DnD){
@@ -59,7 +60,9 @@ function Pencil(ctx, drawing, canvas) {
 			default :{
 				break;
 			}
+			
 		}
+		drawing.paint(ctx);
 
 	}
 	//Actif au relâchement du clic - Le code est similaire à onInteractionUpdate, car on modifie
@@ -84,6 +87,7 @@ function Pencil(ctx, drawing, canvas) {
 				break;
 			}
 		}
+		drawing.paint(ctx);
 	}
 
 
