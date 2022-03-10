@@ -19,15 +19,15 @@ function Pencil(ctx, drawing, canvas) {
 		switch (this.currEditingMode){
 			// Le mode enclenché est en écriture de lignes
 			case editingMode.line : {
-				var ligne = new Line(DnD.getInitX(),DnD.getIniY(), DnD.getFinalX(), DnD.getFinalY(), 
-				canvas.currLineWidth, canvas.currColor);
+				var ligne = new Line(DnD.getInitX,DnD.getInitY(), DnD.getFinalX(), DnD.getFinalY(), 
+				this.currLineWidth, this.currColour);
 				drawing.addForms(ligne);
 				break;
 			}
 			// Le mode enclenché est en écriture de rectangles
 			case editingMode.rect : {
 				var rectangle = new Rectangle(DnD.getInitX(), DnD.getinitY(), (DnD.getFinalX()-DnD.getInitX()),
-				(DnD.getFinalY()-DnD.getInitY()));
+				(DnD.getFinalY()-DnD.getInitY()), this.currLineWidth,this.currColour);
 				drawing.addForms(rectangle);
 				 break;
 			}			
