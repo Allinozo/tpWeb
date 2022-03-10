@@ -22,12 +22,12 @@ function DnD(canvas, interactor) {
 
   //Fonction prenant en compte le mouvement de la souris
   DnD.prototype.Move = function(evt){
-    if (this.active = true){
+    if (this.active == true){
       this.endX=getMousePosition(canvas,evt).x;
       this.endY=getMousePosition(canvas,evt).y;
     //  console.log('x = '+this.initX+', y = '+this.initY);
       interactor.onInteractionUpdate(this);
-    
+  
     }
   }
   //Fonction prenant en compte le relâchement du clic de souris
