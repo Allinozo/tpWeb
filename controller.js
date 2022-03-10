@@ -10,7 +10,7 @@ function Pencil(ctx, drawing, canvas) {
 	// Liez ici les widgets à la classe pour modifier les attributs présents ci-dessus.
 
 	new DnD(canvas, this);
-
+}
 	// Implémentez ici les 3 fonctions onInteractionStart, onInteractionUpdate et onInteractionEnd
 
 	// Actif au moment du clic
@@ -19,15 +19,15 @@ function Pencil(ctx, drawing, canvas) {
 		switch (this.currEditingMode){
 			// Le mode enclenché est en écriture de lignes
 			case editingMode.line : {
-				var ligne = new Line(DnD.getInitX(),DnD.getIniY(), DnD.getFinalX(), DnD.getFinalY(), 
+				var ligne = new Line(DnD.initX,DnD.initY, DnD.endX, DnD.endY, 
 				this.currLineWidth, this.currColor);
 				drawing.addForms(ligne);
 				break;
 			}
 			// Le mode enclenché est en écriture de rectangles
 			case editingMode.rect : {
-				var rectangle = new Rectangle(DnD.getInitX(), DnD.getinitY(), (DnD.getFinalX()-DnD.getInitX()),
-				(DnD.getFinalY()-DnD.getInitY()), this.currLineWidth,this.currColour);
+				var rectangle = new Rectangle(DnD.initX, DnD.initY, (DnD.endX-DnD.initX),
+				(DnD.endY-DnD.initY), this.currLineWidth,this.currColour);
 				drawing.addForms(rectangle);
 				 break;
 			}			
@@ -43,15 +43,15 @@ function Pencil(ctx, drawing, canvas) {
 		//On vérifie le mode d'écriture
 		switch (this.currEditingMode) {
 			case editingMode.line : {
-				var ligne = new Line(DnD.getInitX(),DnD.getIniY(), DnD.getFinalX(), DnD.getFinalY(), 
+				var ligne = new Line(DnD.initX,DnD.iniY, DnD.finalX, DnD.finalY, 
 				canvas.currLineWidth, canvas.currColor);
 				drawing.changeForm(ligne);
 				break;
 			}
 			//Le mode enclenché est en écriture de rectangles
 			case editingMode.rect : {
-				var rectangle = new Rectangle(DnD.getInitX(), DnD.getinitY(), (DnD.getFinalX()-DnD.getInitX()),
-				(DnD.getFinalY()-DnD.getInitY()));
+				var rectangle = new Rectangle(DnD.initX, DnD.initY, (DnD.endX-DnD.initX),
+				(DnD.endY-DnD.entInitY));
 				drawing.ChangeForms(rectangle);
 				break;
 
@@ -71,14 +71,14 @@ function Pencil(ctx, drawing, canvas) {
 		//On vérifie le mode d'écriture
 		switch (this.currEditingMode) {
 			case editingMode.line : {
-				drawing.changeForm(DnD.getInitX(),DnD.getIniY(), DnD.getFinalX(), DnD.getFinalY(), 
+				drawing.changeForm(DnD.initX,DnD.iniY, DnD.endX, DnD.endY, 
 				canvas.currLineWidth, canvas.currColor);
 				break;
 			}
 			//Le mode enclenché est en écriture de rectangles
 			case editingMode.rect : {
-				drawing.ChangeForms(DnD.getInitX(), DnD.getinitY(), (DnD.getFinalX()-DnD.getInitX()),
-				 (DnD.getFinalY()-DnD.getInitY()));
+				drawing.ChangeForms(DnD.initX, DnD.initY, (DnD.endX-DnD.initX),
+				 (DnD.endY-DnD.initY));
 				 break;
 
 			} 
@@ -90,5 +90,3 @@ function Pencil(ctx, drawing, canvas) {
 		drawing.paint(ctx);
 	}
 
-
-}
