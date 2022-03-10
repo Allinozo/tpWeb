@@ -5,8 +5,10 @@
 Rectangle.prototype.paint = function(ctx) {
     //TODO Manager color
     ctx.beginPath();
-    ctx.rect(this.getInitX(), this.getInitY(), this.getHeight(),   this.getWeight()); // Dessine le rectangle
-    //ctx.strokeStyle = this.getColor; //Rend la couleur de la forme créée.
+    ctx.rect(this.getInitX(), this.getInitY(), this.getHeight(),   this.getWidth()); // Dessine le rectangle
+    //ctx.strokeStyle = this.getColor; //Couleur du trait
+    ctx.fillStyle = this.getColor();
+    ctx.fillRect(this.getInitX(), this.getInitY(), this.getHeight(), this.getWidth()); 
     ctx.stroke();
   };
   
@@ -15,7 +17,9 @@ Rectangle.prototype.paint = function(ctx) {
     ctx.beginPath();
     ctx.moveTo(this.getInitX(), this.getInitY());   //Setup le point de base de la ligne
     ctx.lineTo(this.getFinalX(), this.getFinalY()); //Dessine la ligne entre (initX, initY) et (finalX,finalY)
+    ctx.strokeStyle = this.getColor();
     ctx.stroke();
+    
   };
   
   Drawing.prototype.paint = function(ctx) {

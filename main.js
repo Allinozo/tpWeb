@@ -12,15 +12,15 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);  // now fill the canvas
 /////
 
 // Code temporaire pour tester l'affiche de la vue
-var rec = new Rectangle(60, 20, 50, 100, 10, '33FFF0');
+var rec = new Rectangle(60, 20, 50, 20, 10, '#33FFF0'); // Crée un nouveau rectangle avec des coordonnées spécifiées
 rec.paint(ctx);
-var ligne = new Line(10, 10, 50, 50, 5, '#00CCC0');
-ligne.paint(ctx);
+var ligne = new Line(10, 10, 50, 50, 5, '#FF3333'); // Crée une nouvelle ligne avec les coordonnées spécifiées
+//ligne.paint(ctx);
 
-//var draw=new Drawing();
-//draw.addForms(rec);
-//draw.addForms(ligne);
-//draw.paint(ctx);
+var draw=new Drawing();
+draw.addForms(rec);
+draw.addForms(ligne);
+draw.paint(ctx);
 
 ////
 

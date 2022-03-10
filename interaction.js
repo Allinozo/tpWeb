@@ -15,8 +15,9 @@ function DnD(canvas, interactor) {
   DnD.prototype.Pression = function(evt){
     this.initX=getMousePosition(canvas,evt).x;
     this.initY=getMousePosition(canvas,evt).y;
-    console.log('x = '+this.initX + ', y = '+ this.initY);
+    // console.log('x = '+this.initX + ', y = '+ this.initY);
     this.active=true;
+    interactor.onInteractionStart(this);
   }
 
   //Fonction prenant en compte le mouvement de la souris
@@ -24,15 +25,18 @@ function DnD(canvas, interactor) {
     if (this.active = true){
       this.endX=getMousePosition(canvas,evt).x;
       this.endY=getMousePosition(canvas,evt).y;
+    //  console.log('x = '+this.initX+', y = '+this.initY);
+      interactor.onInteractionUpdate(this);
+    
     }
-    console.log('x = '+this.initX+', y = '+this.initY);
   }
   //Fonction prenant en compte le relâchement du clic de souris
   DnD.prototype.Releasing = function(evt) {
     this.endX=getMousePosition(canvas,evt).x;
     this.endY=getMousePosition(canvas,evt).y;
     this.active=false;
-    console.log(' x = ' +this.endX + ', y = ' + this.endY)
+   // console.log(' x = ' +this.endX + ', y = ' + this.endY)
+    interactor.onInteractionEnd(this);
   }
 
 
@@ -51,6 +55,27 @@ function getMousePosition(canvas, evt) {
     y: evt.clientY - rect.top
   };
 };
+
+DnD.prototype.getInitX = function() {
+  return this.initX;
+}
+
+DnD.prototype.getInitY = function() {
+  return this.initY;
+}
+
+DnD.prototype.getEndX = function() {
+  return this.endX;
+}
+
+DnD.prototype.getEndY = function() {
+  return this.endY;
+}
+
+DnD.prototype.getActive = function() {
+  return this.active;
+}
+
 
 
 

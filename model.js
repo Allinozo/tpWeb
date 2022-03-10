@@ -12,8 +12,9 @@ Drawing.prototype.addForms = function(form) {
 }
 
 // Fonction permettant de changer un élément de notre array si on modifie un tableau.
-Drawing.prototype.changeForm = function(id,form){
-    this.formsArray[id] = form;
+Drawing.prototype.changeForm = function(form){
+    this.formsArray.pop();
+    this.formsArray.push(form);
 }
 
 // Fonction permettant de récupérer le tableau.
@@ -31,13 +32,14 @@ function Forme(color, thickness){
 // Fonction définissant la classe fille de Forme, Rectangle.
 // Le rectangle est défini à partir des éléments de base de form, ainsi que par son point en haut à gauche,
 // par sa hauteur et par sa largeur
-function Rectangle(initX,initY, weight, height, thickness, color){
+function Rectangle(initX,initY, width, height, thickness, color){
 
+    Forme.call(this, color, thickness);
     this.initX=initX;
     this.initY=initY;
-    this.weight=weight;
+    this.width=width;
     this.height=height;
-    Forme.call(this, color, thickness);
+    
 
 }
 // Tous les getters pour la class Rectangle
@@ -49,8 +51,8 @@ Rectangle.prototype.getInitY = function(){
     return this.initY;
 }
 
-Rectangle.prototype.getWeight = function(){
-    return this.weight;
+Rectangle.prototype.getWidth = function(){
+    return this.width;
 }
 
 Rectangle.prototype.getHeight = function(){
@@ -68,10 +70,10 @@ Rectangle.prototype.getThickness = function(){
 // Fonction définissant la classe fille de Forme, Line.
 // La  ligne est définie à partir des éléments de base de form, ainsi que par les coordonnées de son point
 // de départ et de son point d'arrivée.
-function Line(baseX, baseY, finalX, finalY, thickness, color){
+function Line(initX, initY, finalX, finalY, thickness, color){
 
-    this.baseX=baseX;
-    this.baseY=baseY;
+    this.initX=initX;
+    this.initY=initY;
     this.finalX=finalX;
     this.finalY=finalY;
     Forme.call(this, color, thickness);
