@@ -19,8 +19,8 @@ function Pencil(ctx, drawing, canvas) {
 		switch (this.currEditingMode){
 			// Le mode enclenché est en écriture de lignes
 			case editingMode.line : {
-				var ligne = new Line(DnD.getInitX,DnD.getInitY(), DnD.getFinalX(), DnD.getFinalY(), 
-				this.currLineWidth, this.currColour);
+				var ligne = new Line(DnD.getInitX(),DnD.getIniY(), DnD.getFinalX(), DnD.getFinalY(), 
+				this.currLineWidth, this.currColor);
 				drawing.addForms(ligne);
 				break;
 			}
