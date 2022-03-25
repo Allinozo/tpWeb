@@ -40,67 +40,71 @@ function Rectangle(initX,initY, width, height, thickness, color){
     this.width=width;
     this.height=height;
     
-
+    this.getInitX = function(){
+        return this.initX;
+   }.bind(this);
+   
+  this.getInitY = function(){
+       return this.initY;
+   }.bind(this);
+   
+   this.getWidth = function(){
+       return this.width;
+   }.bind(this);
+   
+   this.getHeight = function(){
+       return this.height;
+   }.bind(this);
+   
+   this.getColor = function(){
+       return this.color;
+   }.bind(this);
+   
+   this.getThickness = function(){
+       return this.thickness;
+   }.bind(this);
+   
 }
 // Tous les getters pour la class Rectangle
-Rectangle.prototype.getInitX = function(){
-     return this.initX;
-}
-
-Rectangle.prototype.getInitY = function(){
-    return this.initY;
-}
-
-Rectangle.prototype.getWidth = function(){
-    return this.width;
-}
-
-Rectangle.prototype.getHeight = function(){
-    return this.height;
-}
-
-Rectangle.prototype.getColor = function(){
-    return this.color;
-}
-
-Rectangle.prototype.getThickness = function(){
-    return this.thickness;
-}
 
 // Fonction définissant la classe fille de Forme, Line.
 // La  ligne est définie à partir des éléments de base de form, ainsi que par les coordonnées de son point
 // de départ et de son point d'arrivée.
 function Line(initX, initY, finalX, finalY, thickness, color){
+    Forme.call(this, color, thickness);
+    console.log(color)
 
     this.initX=initX;
     this.initY=initY;
     this.finalX=finalX;
     this.finalY=finalY;
-    Forme.call(this, color, thickness);
+    
+    this.getInitX = function(){
+        return this.initX;
+}.bind(this);
+
+this.getInitY = function(){
+    return this.initY;
+}.bind(this);
+
+this.getFinalX = function(){
+    return this.finalX;
+}.bind(this);
+
+this.getFinalY = function(){
+    return this.finalY;
+}.bind(this);
+
+this.getColor = function(){
+    return this.color;
+}.bind(this);
+
+this.getThickness = function(){
+    return this.thickness;
+}.bind(this);
+
+
 }    
 
 // Tous les getters pour la class Line
 
-Line.prototype.getInitX = function(){
-        return this.initX;
-}
-
-Line.prototype.getInitY = function(){
-    return this.initY;
-}
-
-Line.prototype.getFinalX = function(){
-    return this.finalX;
-}
-
-Line.prototype.getFinalY = function(){
-    return this.finalY;
-}
-
-Line.prototype.getColor = function(){
-    return this.color;
-}
-
-Line.prototype.getThickness = function(){
-    return this.thickness;
-}
